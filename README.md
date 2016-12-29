@@ -1,11 +1,11 @@
 # tibco-twilio
-This activity provides your flogo application the ability to send a SMS via Twilio.
+This activity provides your flogo application the ability to send a message to an Apache Kafka broker.
 
 
 ## Installation
 
 ```bash
-flogo add activity github.com/TIBCOSoftware/flogo-contrib/activity/twilio
+flogo add activity github.com/TIBCOSoftware/flogo-contrib/activity/kafka
 ```
 
 ## Schema
@@ -15,25 +15,13 @@ Inputs and Outputs:
 {
   "inputs":[
     {
-      "name": "accountSID",
-      "type": "string"
-    },
-    {
-      "name": "authToken",
-      "type": "string"
-    },
-    {
-      "name": "from",
-      "type": "string"
-    },
-    {
-      "name": "to",
+      "name": "token",
       "type": "string"
     },
     {
       "name": "message",
       "type": "string"
-    }  
+    }
   ],
   "outputs": []
 }
@@ -41,51 +29,26 @@ Inputs and Outputs:
 ## Settings
 | Setting     | Description    |
 |:------------|:---------------|
-| accountSID | The Twilio account SID |         
-| authToken  | The Twilio auth token  |
-| from       | The Twilio number you are sending the SMS from |
-| to         | The number you are sending the SMS to |
-| message    | The SMS message |
-Note: 
-Phone numbers should be in the format '+15555555555'
+| topic | The Kafka Topic name |         
+| message  | The message content  |
 
 ## Configuration Examples
 ### Simple
-Configure a task in flow to send 'my text message' to '617-555-5555' via Twilio:
+Configure a task in flow to send 'hello from flogo' to 'my-messages' Kafka Topic:
 
 ```json
 {
   "id": 3,
   "type": 1,
-  "activityType": "tibco-twilio",
-  "name": "Send Text Message",
+  "activityType": "tibco-kafka",
+  "name": "Send Message",
   "attributes": [
-    { "name": "accountSID", "value": "A...9" },
-    { "name": "authToken", "value": "A...9" },
-    { "name": "from", "value": "+12016901385" },
-    { "name": "to", "value": "+16175555555" },
-    { "name": "message", "value": "my text message" }
+    { "name": "topic", "value": "my-messages" },
+    { "name": "message", "value": "hello from flogo" },
   ]
 }
 ```
 
 ### Advanced
-Configure a task in flow to send 'my text message' to a number from a REST trigger's query parameter:
-
-```json
-{
-  "id": 3,
-  "type": 1,
-  "activityType": "tibco-twilio",
-  "name": "Send Text Message",
-  "attributes": [
-    { "name": "accountSID", "value": "A...9" },
-    { "name": "authToken", "value": "A...9" },
-    { "name": "from", "value": "+12016901385" },
-    { "name": "message", "value": "my text message" }
-  ],
-  "inputMappings": [
-    { "type": 1, "value": "[T.queryParams].From", "mapTo": "to" }
-  ]
-}
+TODO
 ```
