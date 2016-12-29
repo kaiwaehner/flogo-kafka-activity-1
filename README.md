@@ -1,4 +1,4 @@
-# tibco-twilio
+# tibco-kafka
 This activity provides your flogo application the ability to send a message to an Apache Kafka broker.
 
 
