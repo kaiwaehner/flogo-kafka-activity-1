@@ -32,18 +32,12 @@ func TestEval(t *testing.T) {
 	tc := test.NewTestActivityContext(md)
 
 	//setup attrs
-	//	tc.SetInput(ivAcctSID, "A...9")
-	//	tc.SetInput(ivAuthToken, "f...4")
-	//	tc.SetInput(ivTo, "+1...")
-	//	tc.SetInput(ivFrom, "+12016901385")
-	//	tc.SetInput(ivMessage, "Go Flogo")
-
 	tc.SetInput(topic, "my-messages")
-	tc.SetInput(message, "test message by kai for kafka")
+	tc.SetInput(message, "another test message by kai for kafka")
 
 	act.Eval(tc)
 
 	//check result attr
 
-	// TODO
+	// TODO how to do some checks if the activity has no Output?
 }

@@ -44,14 +44,6 @@ func (a *KafkaActivity) Metadata() *activity.Metadata {
 // Eval implements activity.Activity.Eval
 func (a *KafkaActivity) Eval(context activity.Context) (done bool, err error) {
 
-	//	accountSID := context.GetInput(ivAcctSID).(string)
-	//	authToken := context.GetInput(ivAuthToken).(string)
-	//	from := context.GetInput(ivFrom).(string)
-	//	to := context.GetInput(ivTo).(string)
-	//	message := context.GetInput(ivMessage).(string)
-
-	//	twilio := gotwilio.NewTwilioClient(accountSID, authToken)
-
 	topicInput := context.GetInput(topic).(string)
 
 	messageInput := context.GetInput(message).(string)
@@ -66,24 +58,6 @@ func (a *KafkaActivity) Eval(context activity.Context) (done bool, err error) {
 	defer broker.Close()
 
 	producer := broker.Producer(kafka.NewProducerConf())
-	//input := bufio.NewReader(os.Stdin)
-	//	for {
-	//		line, err := input.ReadString('\n')
-	//		if err != nil {
-	//			log.Fatalf("input error: %s", err)
-	//		}
-	//		line = strings.TrimSpace(line)
-	//		if line == "" {
-	//			continue
-	//		}
-
-	//		msg := &proto.Message{Value: []byte(line)}
-	//		if _, err := producer.Produce(topic, partition, msg); err != nil {
-	//			log.Fatalf("cannot produce message to %s:%d: %s", topic, partition, err)
-	//		}
-	//	}
-
-	// resp, _, err := twilio.SendSMS(from, to, message, "", "")
 
 	msg := &proto.Message{Value: []byte(messageInput)}
 
