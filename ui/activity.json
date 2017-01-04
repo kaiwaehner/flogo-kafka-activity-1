@@ -1,5 +1,5 @@
 {
-  "name": "tibco-twilio",
+  "name": "tibco-kafka",
   "version": "0.0.1",
   "title": "Send Message to Kafka",
   "description": "Simple Kafka Activity",

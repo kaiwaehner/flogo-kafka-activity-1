@@ -12,12 +12,6 @@ import (
 var log = logging.MustGetLogger("activity-tibco-kafka")
 
 const (
-	//	ivAcctSID   = "accountSID"
-	//	ivAuthToken = "authToken"
-	//	ivFrom      = "from"
-	//	ivTo        = "to"
-	//	ivMessage   = "message"
-
 	topic     = "topic"
 	message   = "message"
 	partition = 0
@@ -50,6 +44,7 @@ func (a *KafkaActivity) Eval(context activity.Context) (done bool, err error) {
 
 	conf := kafka.NewBrokerConf("test-client")
 	conf.AllowTopicCreation = true
+
 	// connect to kafka cluster
 	broker, err := kafka.Dial(kafkaAddrs, conf)
 	if err != nil {
